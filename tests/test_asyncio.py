@@ -85,7 +85,6 @@ class TestAsyncio(unittest.TestCase):
         assert thing.counter == thing.count
 
     @asynctest
-    @asynctest
     async def test_wait_for_not_retried_with_retry_if_not_exception_type(self) -> None:
         """CancelledError must propagate under retry_if_not_exception_type (#529).
 
@@ -141,6 +140,7 @@ class TestAsyncio(unittest.TestCase):
             await sleepy()
         self.assertEqual(attempts, 1)
 
+    @asynctest
     async def test_iscoroutinefunction(self) -> None:
         assert asyncio.iscoroutinefunction(_retryable_coroutine)
         assert inspect.iscoroutinefunction(_retryable_coroutine)
