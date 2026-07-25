@@ -85,8 +85,6 @@ class TestAsyncio(unittest.TestCase):
         assert thing.counter == thing.count
 
     @asynctest
-
-
     @asynctest
     async def test_wait_for_not_retried_with_retry_if_not_exception_type(self) -> None:
         """CancelledError must propagate under retry_if_not_exception_type (#529).
@@ -118,7 +116,9 @@ class TestAsyncio(unittest.TestCase):
         self.assertEqual(attempts, 1)
 
     @asynctest
-    async def test_cancelled_error_not_retried_even_if_listed_as_exception(self) -> None:
+    async def test_cancelled_error_not_retried_even_if_listed_as_exception(
+        self,
+    ) -> None:
         """Even if someone passes BaseException broadly, cancel still wins.
 
         ``retry_if_not_exception_type`` excludes control-flow exceptions

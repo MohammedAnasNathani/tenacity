@@ -1390,7 +1390,6 @@ class TestDecoratorWrapper(unittest.TestCase):
             print(_retryable_test_if_exception_message_message.statistics)
             self.fail("CustomError should've been retried from errormessage")
 
-
     def test_retry_if_not_exception_type_skips_control_flow(self) -> None:
         """BaseException control-flow must not be retried (#529)."""
         calls = {"n": 0}
