@@ -86,6 +86,7 @@ class AsyncRetrying(BaseRetrying):
         after: t.Callable[["RetryCallState"], None | t.Awaitable[None]] = after_nothing,
         before_sleep: t.Callable[["RetryCallState"], None | t.Awaitable[None]]
         | None = None,
+        success: t.Callable[["RetryCallState"], None | t.Awaitable[None]] | None = None,
         reraise: bool = False,
         retry_error_cls: type["RetryError"] = RetryError,
         retry_error_callback: t.Callable[["RetryCallState"], t.Any | t.Awaitable[t.Any]]
@@ -101,6 +102,7 @@ class AsyncRetrying(BaseRetrying):
             before=before,  # type: ignore[arg-type]
             after=after,  # type: ignore[arg-type]
             before_sleep=before_sleep,  # type: ignore[arg-type]
+            success=success,  # type: ignore[arg-type]
             reraise=reraise,
             retry_error_cls=retry_error_cls,
             retry_error_callback=retry_error_callback,
