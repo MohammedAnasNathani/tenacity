@@ -717,6 +717,7 @@ def retry(
     before: t.Callable[["RetryCallState"], t.Awaitable[None] | None] = ...,
     after: t.Callable[["RetryCallState"], t.Awaitable[None] | None] = ...,
     before_sleep: t.Callable[["RetryCallState"], t.Awaitable[None] | None] | None = ...,
+    success: t.Callable[["RetryCallState"], t.Awaitable[None] | None] | None = ...,
     reraise: bool = ...,
     retry_error_cls: type["RetryError"] = ...,
     retry_error_callback: t.Callable[["RetryCallState"], t.Any | t.Awaitable[t.Any]]
@@ -735,6 +736,7 @@ def retry(
     after: t.Callable[["RetryCallState"], t.Awaitable[None] | None] = after_nothing,
     before_sleep: t.Callable[["RetryCallState"], t.Awaitable[None] | None]
     | None = None,
+    success: t.Callable[["RetryCallState"], t.Awaitable[None] | None] | None = None,
     reraise: bool = False,
     retry_error_cls: type["RetryError"] = RetryError,
     retry_error_callback: t.Callable[["RetryCallState"], t.Any | t.Awaitable[t.Any]]
