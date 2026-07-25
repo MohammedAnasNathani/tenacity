@@ -1397,7 +1397,7 @@ class TestDecoratorWrapper(unittest.TestCase):
 
         def boom() -> None:
             calls["n"] += 1
-            raise KeyboardInterrupt()
+            raise KeyboardInterrupt
 
         r = tenacity.Retrying(
             wait=tenacity.wait_fixed(0),

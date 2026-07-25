@@ -135,7 +135,7 @@ class TestAsyncio(unittest.TestCase):
         async def sleepy() -> None:
             nonlocal attempts
             attempts += 1
-            raise asyncio.CancelledError()
+            raise asyncio.CancelledError
 
         with self.assertRaises(asyncio.CancelledError):
             await sleepy()
