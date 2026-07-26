@@ -1473,8 +1473,10 @@ class TestDecoratorWrapper(unittest.TestCase):
             except NameError as wrap:
                 fut = Future(1)
                 fut.set_exception(wrap)
+
         class RS:
             outcome = fut
+
         self.assertTrue(pred(RS()))  # type: ignore[arg-type]
 
         # Cause is NameError → do not retry
@@ -1486,8 +1488,10 @@ class TestDecoratorWrapper(unittest.TestCase):
             except OSError as wrap:
                 fut2 = Future(1)
                 fut2.set_exception(wrap)
+
         class RS2:
             outcome = fut2
+
         self.assertFalse(pred(RS2()))  # type: ignore[arg-type]
 
     def test_cause_chain_cycle_does_not_hang(self) -> None:
