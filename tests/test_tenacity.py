@@ -1499,7 +1499,7 @@ class TestDecoratorWrapper(unittest.TestCase):
         from tenacity.retry import _cause_chain_contains
 
         e = RuntimeError("loop")
-        e.__cause__ = e  # type: ignore[assignment]
+        type(e).__setattr__(e, "__cause__", e)
         self.assertFalse(_cause_chain_contains(e, ValueError))
         self.assertTrue(_cause_chain_contains(e, RuntimeError))
 
